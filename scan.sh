@@ -37,8 +37,8 @@ numfiles=${#numfiles[@]}
 if [ $numfiles -gt 0 ]
 then
 	touch $OUTDIR/endOfBatch
+	bash ./convert.sh $OUDTDIR
 else
 	rm -r $OUTDIR
 fi
 
-./convert.sh $OUDTDIR
