@@ -1,28 +1,30 @@
 #!/bin/bash
 
+OUT=$1
+
 shopt -s nullglob
-numfiles=($1/endOfBatch)
+numfiles=($OUT/endOfBatch)
 numfiles=${#numfiles[@]}
 
 if [ $numfiles -gt 0 ]
 then
-	echo "endOfBatch found in $1/"
-	mkdir $1/tmp
-	for i in $1/*.tif
+	echo "endOfBatch found in $OUT/"
+	mkdir $OUT/tmp
+	for i in $OUT/*.tif
 	do
-	   convert "$i" $1/tmp/a.pdf
+	   convert "$i" $OUT/tmp/a.pdf
 	   wait
 	   echo "Conversion of $i done."
-	   if [ -s $1/tmp/file.pdf ]
+	   if [ -s $OUT/tmp/file.pdf ]
 	   then
-		gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$1/tmp/b.pdf $1/tmp/file.pdf $1/tmp/a.pdf
+		gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$OUT/tmp/b.pdf $OUT/tmp/file.pdf $OUT/tmp/a.pdf
 		wait
 	   else
-		mv $1/tmp/a.pdf $1/tmp/b.pdf
+		mv $OUT/tmp/a.pdf $OUT/tmp/b.pdf
 	   fi
-	   mv $1/tmp/b.pdf $1/tmp/file.pdf
+	   mv $OUT/tmp/b.pdf $OUT/tmp/file.pdf
 	done
-	mv $1/tmp/file.pdf $1.pdf
+	mv $OUT/tmp/file.pdf $OUT.pdf
 fi
 
 bash ./sync.sh

@@ -19,12 +19,13 @@ scanimage \
 --page-width 216 \
 --page-height 355.6 \
 --format=tiff \
---batch=$OUTDIR/p%04d.tif \
+#--batch=$OUTDIR/p%04d.tif \
 --source "ADF Duplex" \
 --resolution 300 \
 --mode Lineart \
 --brightness 50 \
---sleeptimer 0
+--sleeptimer 0 \
+>$OUTDIR/p%04d.tif
 wait
 
 
