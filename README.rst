@@ -1,6 +1,7 @@
 Dependencies
 ------------
 	::
+
 		$ sudo su
 		$ apt-get update
 		$ apt-get install sane-utils
