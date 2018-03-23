@@ -1,11 +1,9 @@
+Script to turn your raspberryPi into a scanner server.
+
+Tested with fujitsu fi-6130 duplex scanner.
+
 How to install
 --------------
-	::
-
-		$ cp action.script /usr/share/scanbd/scripts/
-
-Dependencies
-------------
 	::
 
 		$ sudo su
@@ -16,3 +14,6 @@ Dependencies
 		$ apt-get install scanbd
 		$ adduser pi lp
 		$ scanimage -L
+		# Should find your scanner
+		$ scanbd
+		$ cp action.script /usr/share/scanbd/scripts/
