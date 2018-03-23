@@ -6,6 +6,7 @@ Dependencies
 		$ apt-get update
 		$ apt-get install sane-utils
 		$ apt-get install imagemagick
-		$ sudo apt-get install poppler-utils
+		$ apt-get install poppler-utils
+		$ apt-get install scanbd
 		$ adduser pi lp
 		$ scanimage -L
