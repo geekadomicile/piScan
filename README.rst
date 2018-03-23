@@ -1,3 +1,8 @@
+How to install
+--------------
+	::
+		$ cp action.script /usr/share/scanbd/scripts/
+
 Dependencies
 ------------
 	::
