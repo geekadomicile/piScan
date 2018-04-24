@@ -31,12 +31,12 @@ case "$SCANBD_ACTION" in
   convert -density 150 "$scan_dir/$filename-*.tiff" "$scan_dir/$filename.ps"
   logger -t "scanbd: $0" "$SCANBD_ACTION - converting ps to pdf"
   ps2pdf  -sPAPERSIZE=legal "$scan_dir/$filename.ps" "$scan_dir/$filename.pdf"
-  logger -t "scanbd: $0" "$SCANBD_ACTION - syncing to $remote_dir"
-  rsync -ruaze ssh /var/spool/scan/* $remote_dir
+  logger -t "scanbd: $0" "$SCANBD_ACTION - syncing pdf to $remote_dir"
+  rsync -ruaze ssh /var/spool/scan/*.pdf $remote_dir
   logger -t "scanbd: $0" "$SCANBD_ACTION - cleaning up $scan_dir/"
-  rm "$scan_dir/$filename-*.tiff"
-  rm "$scan_dir/$filename.ps"
-  rm "$scan_dir/$filename.pdf"
+  rm -rf $scan_dir/$filename-*.tiff
+  rm -rf $scan_dir/$filename.ps
+  rm -rf $scan_dir/$filename.pdf
   ;;
  pdf)
   scanimage -d "$SCANBD_DEVICE" --resolution 150 --mode Color --depth 16 --format=tiff > "$scan_dir/$filename.tiff"
