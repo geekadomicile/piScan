@@ -10,11 +10,12 @@ How to install
 		$ apt-get update
 		$ apt-get install git sane-utils imagemagick poppler-utils scanbd
         $ git clone https://github.com/geekadomicile/piScan.git
+        $ cd piScan
 		$ adduser pi lp
 		$ scanimage -L
 		# Should find your scanner
 		$ scanbd
-		$ cp action.script text.script /usr/share/scanbd/scripts/
+		$ cp action.script test.script /usr/share/scanbd/scripts/
 		$ cp scanbd.debian /etc/init.d/scanbd
 		$ chmod 755 /etc/init.d/scanbd
 		$ update-rc.d scanbd defaults
