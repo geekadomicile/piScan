@@ -8,15 +8,15 @@ How to install
 
 		$ sudo su
 		$ apt-get update
-		$ apt-get install vim git sane-utils imagemagick poppler-utils scanbd
-        $ git clone https://github.com/geekadomicile/piScan.git
-        $ cd piScan
+		$ apt-get install vim git scanbd imagemagick poppler-utils
+                $ git clone https://github.com/geekadomicile/piScan.git
+                $ cd piScan
 		$ adduser pi lp
 		$ scanimage -L
 		# Should find your scanner
 		$ scanbd
 		$ cp action.script test.script /usr/share/scanbd/scripts/
-        $ service scanbd restart
+                $ service scanbd restart
 		$ cp scanbd.debian /etc/init.d/scanbd
 		$ chmod 755 /etc/init.d/scanbd
 		$ update-rc.d scanbd defaults
