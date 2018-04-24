@@ -21,6 +21,8 @@ How to install
 		$ ssh-keygen -t rsa
                 $ ssh piscan@ongat.com mkdir -p .ssh
                 $ cat .ssh/id_rsa.pub | ssh piscan@ongat.com 'cat >> .ssh/authorized_keys'
+                $ systemctl enable scanbd
+                $ reboot
 
 A few usefull links
 -------------------
