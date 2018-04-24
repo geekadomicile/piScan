@@ -15,11 +15,12 @@ How to install
 		$ scanimage -L
 		# Should find your scanner
 		$ cp action.script test.script /usr/share/scanbd/scripts/
+		$ cp scanbd.conf /etc/scanbd/
                 $ service scanbd stop
                 $ service scanbd start
 		$ ssh-keygen -t rsa
-                $ ssh ykassine@ongat.com mkdir -p .ssh
-                $ cat .ssh/id_rsa.pub | ssh ykassine@ongat.com 'cat >> .ssh/authorized_keys'
+                $ ssh piscan@ongat.com mkdir -p .ssh
+                $ cat .ssh/id_rsa.pub | ssh piscan@ongat.com 'cat >> .ssh/authorized_keys'
 
 A few usefull links
 -------------------
