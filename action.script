@@ -25,9 +25,9 @@ case "$SCANBD_ACTION" in
   --source "ADF Duplex" \
   --resolution $resolution \
   --mode Color \
+  -d "$SCANBD_DEVICE"
 #  --depth 16
 #  --brightness 30 \
-  -d "$SCANBD_DEVICE"
   logger -t "scanbd: $0" "$SCANBD_ACTION - converting $format to ps"
   convert -colorspace RGB -density $resolution "$scan_dir/$filename-*.$format" "$scan_dir/$filename.ps"
   logger -t "scanbd: $0" "$SCANBD_ACTION - converting ps to pdf"
