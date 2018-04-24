@@ -4,11 +4,13 @@
 # Modified by: Yevgueny KASSINE <ykassine@geekadomicile.com>
 
 scan_dir=/var/spool/scan
-remote_dir=ykassine@ongat.com:piScan/
+remote_dir=piscan@ongat.com:
 #datetime=`date +%F_%H%M%S`
-datetime=`date +%Y%m%dT%H%M%S`
+datetime=`date +%Y%m%dT%H%M%S%Z`
 filename="piscan-$datetime"
 send_to=piscan@geekadomicile.com
+resolution=150
+format=tiff
 
 case "$SCANBD_ACTION" in
  scan)
@@ -18,17 +20,16 @@ case "$SCANBD_ACTION" in
   -y 356 \
   --page-width 216 \
   --page-height 356 \
-  --format=tiff \
+  --format=$format \
   --batch=$scan_dir/$filename-%04d.tiff \
   --source "ADF Duplex" \
-  --resolution 150 \
-  --mode Lineart \
-#  --mode Color \
+  --resolution $resolution \
+  --mode Color \
 #  --depth 16
-  --brightness 30 \
+#  --brightness 30 \
   -d "$SCANBD_DEVICE"
-  logger -t "scanbd: $0" "$SCANBD_ACTION - converting tiff to ps"
-  convert -density 150 "$scan_dir/$filename-*.tiff" "$scan_dir/$filename.ps"
+  logger -t "scanbd: $0" "$SCANBD_ACTION - converting $format to ps"
+  convert -colorspace RGB -density $resolution "$scan_dir/$filename-*.$format" "$scan_dir/$filename.ps"
   logger -t "scanbd: $0" "$SCANBD_ACTION - converting ps to pdf"
   ps2pdf  -sPAPERSIZE=legal "$scan_dir/$filename.ps" "$scan_dir/$filename.pdf"
   logger -t "scanbd: $0" "$SCANBD_ACTION - syncing pdf to $remote_dir"

@@ -14,12 +14,12 @@ How to install
 		$ adduser pi lp
 		$ scanimage -L
 		# Should find your scanner
-		$ scanbd
 		$ cp action.script test.script /usr/share/scanbd/scripts/
-                $ service scanbd restart
-		$ cp scanbd.debian /etc/init.d/scanbd
-		$ chmod 755 /etc/init.d/scanbd
-		$ update-rc.d scanbd defaults
+                $ service scanbd stop
+                $ service scanbd start
+		$ ssh-keygen -t rsa
+                $ ssh ykassine@ongat.com mkdir -p .ssh
+                $ cat .ssh/id_rsa.pub | ssh ykassine@ongat.com 'cat >> .ssh/authorized_keys'
 
 A few usefull links
 -------------------
