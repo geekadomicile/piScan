@@ -3,7 +3,30 @@ Script to turn your raspberryPi into a scan server.
 Tested with fujitsu fi-6130 duplex scanner.
 
 How to install
---------------
+==
+
+Prepare your hardware (using Mac OS X)
+--
+
+Download zip image of debian OS from raspberrypi.org,
+then use Etcher to copy zipped image to your raspberryPi uSD card.
+
+Then open a terminal and type :
+        ::
+                $ cd /Volumes/boot/
+                $ touch ssh
+                $ cd
+
+Unmount uSD card from your Mac and insert it into the raspberryPi.
+
+Connect and power up your raspberryPi.
+
+To login use :
+- login:pi
+- password: raspberry
+
+Install this software
+--
 	::
 
 		$ sudo su
@@ -25,7 +48,7 @@ How to install
                 $ reboot
 
 A few usefull links
--------------------
+==
 http://artem.gratchev.com/2015/01/home-scan-station-based-on-raspberry-pi/
 http://eduardoluis.com/raspberry-pi-and-usb-network-scanner/
 
